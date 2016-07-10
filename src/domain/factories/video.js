@@ -1,13 +1,15 @@
+import config from '../config'
+
 import VideoFromIdUseCase from '../video/VideoFromIdUseCase'
 
-import ApiVideoRepository from '../video/ApiVideoRepository'
+import YTApiVideoRepository from '../video/YTApiVideoRepository'
 
 export default class VideoFactory {
   static videoFromIdUseCase () {
-    return new VideoFromIdUseCase({repository: VideoFactory.apiVideoRepository()})
+    return new VideoFromIdUseCase({repository: VideoFactory.yTApiVideoRepository()})
   }
 
-  static apiVideoRepository () {
-    return new ApiVideoRepository({fetcher: global.fetch})
+  static yTApiVideoRepository () {
+    return new YTApiVideoRepository({config})
   }
 }

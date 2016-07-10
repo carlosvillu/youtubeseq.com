@@ -55,10 +55,7 @@
   },
   "standard": {
     "parser": "babel-eslint",
-    "globals": [
-      "PWD",
-      "npm_package_config_suistudio_base_dir"
-    ]
+    "globals": []
   },
   "babel": {
     "presets": [

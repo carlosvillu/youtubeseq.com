@@ -18,6 +18,7 @@ const config = getConfig({
             '<div id="root"></div>',
             '<script src="' + context['shared.[hash].js'] + '"></script>',
             '<script src="' + context.main + '"></script>',
+            '<script src="https://apis.google.com/js/client.js?onload=OnLoadCallback"></script>',
           '</body>',
         '</html>'
       ].join('')
