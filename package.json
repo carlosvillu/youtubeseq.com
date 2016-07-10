@@ -1,0 +1,88 @@
+{
+  "name": "youtubeseq-com",
+  "private": true,
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "NODE_ENV=production npm run build && gh-pages -d public/",
+    "phoenix": "rm -Rf node_modules && npm it",
+    "build": "webpack",
+    "co": "git-cz",
+    "start": "hjs-dev-server",
+    "lint": "standard",
+    "up": "updtr --test-stdout --save-exact"
+  },
+  "keywords": [],
+  "author": "Carlos Villuendas <carlos.villuendas@scmspain.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-eslint": "6.1.0",
+    "babel-loader": "6.2.4",
+    "babel-plugin-transform-runtime": "6.9.0",
+    "babel-preset-es2015": "6.9.0",
+    "babel-preset-react": "6.5.0",
+    "babel-preset-react-hmre": "1.1.1",
+    "babel-preset-stage-3": "6.5.0",
+    "commitizen": "2.8.2",
+    "css-loader": "0.23.1",
+    "cz-conventional-changelog": "1.1.6",
+    "ghooks": "1.2.4",
+    "hjs-webpack": "8.3.0",
+    "json-loader": "0.5.4",
+    "node-sass": "3.8.0",
+    "nodemon": "1.9.2",
+    "npm-run-all": "2.2.2",
+    "postcss-loader": "0.9.1",
+    "raw-loader": "0.5.1",
+    "sass-loader": "3.2.1",
+    "standard": "7.1.2",
+    "style-loader": "0.13.1",
+    "updtr": "0.2.0",
+    "validate-commit-msg": "2.6.1"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm-run-all lint",
+      "commit-msg": "validate-commit-msg"
+    },
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    },
+    "suistudio": {
+      "base-dir": "src/"
+    }
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "globals": [
+      "PWD",
+      "npm_package_config_suistudio_base_dir"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-3"
+    ],
+    "plugins": [
+      "transform-runtime"
+    ],
+    "env": {
+      "development": {
+        "presets": [
+          "react-hmre"
+        ]
+      }
+    }
+  },
+  "dependencies": {
+    "babel-polyfill": "6.9.1",
+    "isomorphic-fetch": "2.2.1",
+    "normalize.css": "4.1.1",
+    "react": "15.1.0",
+    "react-dom": "15.1.0",
+    "react-router": "2.5.1"
+  }
+}
