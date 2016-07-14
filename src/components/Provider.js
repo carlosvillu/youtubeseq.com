@@ -1,13 +1,15 @@
 import { Component, PropTypes, Children } from 'react'
+import debug from 'debug'
 
 export default class Provider extends Component {
   getChildContext () {
-    return { domain: this.domain }
+    return {domain: this.domain, factoryLogger: this.factoryLogger}
   }
 
   constructor (props, context) {
     super(props, context)
     this.domain = props.domain
+    this.factoryLogger = ({prefix} = {}) => debug(`ytr:${prefix}`)
   }
 
   render () {
@@ -26,12 +28,15 @@ if (process.env.NODE_ENV !== 'production') {
   }
 }
 
+Provider.displayName = 'Provider'
 Provider.propTypes = {
   domain: PropTypes.object.isRequired,
+  factoryLogger: PropTypes.func,
   children: PropTypes.element.isRequired
 }
 
 Provider.childContextTypes = {
-  domain: PropTypes.object
+  domain: PropTypes.object,
+  factoryLogger: PropTypes.func
 }
 

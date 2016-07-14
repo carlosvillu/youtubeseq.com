@@ -1,4 +1,5 @@
 const getConfig = require('hjs-webpack')
+const isDev = process.env.NODE_ENV === 'development'
 
 const config = getConfig({
   in: 'src/app.js',
@@ -15,6 +16,7 @@ const config = getConfig({
           '</head>',
           '<body>',
             '<div id="root"></div>',
+            '<script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.4.2/localforage.nopromises.min.js"></script>',
             '<script src="' + context.main + '"></script>',
             '<script src="https://apis.google.com/js/client.js?onload=OnLoadCallback"></script>',
           '</body>',
@@ -24,6 +26,12 @@ const config = getConfig({
     /*eslint-enable */
   }
 })
+
+config.output.filename = '[name].[hash].js'
+
+if (isDev) {
+  config.devtool = 'source-map'
+}
 
 module.exports = config
 

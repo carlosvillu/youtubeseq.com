@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "deploy": "NODE_ENV=production npm run build && gh-pages -d public/",
+    "deploy": "NODE_ENV=production npm run build && firebase deploy",
     "phoenix": "rm -Rf node_modules && npm it",
     "build": "webpack",
     "co": "git-cz",
@@ -76,8 +76,8 @@
   },
   "dependencies": {
     "babel-polyfill": "6.9.1",
+    "debug": "2.2.0",
     "isomorphic-fetch": "2.2.1",
-    "localforage": "1.4.2",
     "normalize.css": "4.1.1",
     "react": "15.1.0",
     "react-dom": "15.1.0",

@@ -1,13 +1,15 @@
 import Entity from '../Entity'
 
 export default class VideoEntity extends Entity {
-  constructor ({id, title, description, thumbnails, sequence} = {}) {
+  constructor ({id, title, description, thumbnails, channelTitle, channelId, sequence} = {}) {
     super({id, title, thumbnails})
 
     this.id = id
     this.title = title
     this.description = description
     this.thumbnails = thumbnails
+    this.channelId = channelId
+    this.channelTitle = channelTitle
     this._sequence = sequence
   }
 
@@ -19,9 +21,12 @@ export default class VideoEntity extends Entity {
   toJSON () {
     return {
       id: this.id,
+      title: this.title,
       description: this.description,
       thumbnails: this.thumbnails,
-      sequence: this.sequence
+      sequence: this.sequence,
+      channelId: this.channelId,
+      channelTitle: this.channelTitle
     }
   }
 }
