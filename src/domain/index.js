@@ -6,6 +6,7 @@ class YoutubeSeq {
     this._config = config
     this._map = {}
     this._map['video_from_id_use_case'] = VideoFactory.videoFromIdUseCase()
+    this._map['sequence_to_videos_use_case'] = VideoFactory.sequenceToVideosUseCase()
   }
 
   get (key) {
