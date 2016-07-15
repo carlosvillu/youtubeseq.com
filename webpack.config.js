@@ -1,5 +1,7 @@
 const getConfig = require('hjs-webpack')
+var OfflinePlugin = require('offline-plugin')
 const isDev = process.env.NODE_ENV === 'development'
+const isProd = process.env.NODE_ENV === 'production'
 
 const config = getConfig({
   in: 'src/app.js',
@@ -17,6 +19,7 @@ const config = getConfig({
           '<body>',
             '<div id="root"></div>',
             '<script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.4.2/localforage.nopromises.min.js"></script>',
+            '<script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>',
             '<script src="' + context.main + '"></script>',
             '<script src="https://apis.google.com/js/client.js?onload=OnLoadCallback"></script>',
           '</body>',
@@ -30,7 +33,13 @@ const config = getConfig({
 config.output.filename = '[name].[hash].js'
 
 if (isDev) {
-  config.devtool = 'source-map'
+  config.devtool = 'cheap-module-eval-source-map'
+}
+
+if (isProd) {
+  config.plugins.push(new OfflinePlugin({
+    main: [':rest:']
+  }))
 }
 
 module.exports = config

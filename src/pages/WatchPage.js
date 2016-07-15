@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Theatre from '../components/Theatre'
+
 class WatchPage extends React.Component {
   constructor (props, ctxt) {
     super(props, ctxt)
@@ -32,7 +34,7 @@ class WatchPage extends React.Component {
     return (
       <div className='WatchPage'>
         <h1>{title || `Buscando video: ${v}`}</h1>
-        {sequence && <pre><code>{JSON.stringify(sequence, null, 2)}</code></pre>}
+        {sequence && <Theatre videos={sequence} />}
       </div>
     )
   }
