@@ -1,32 +1,35 @@
 const getConfig = require('hjs-webpack')
-var OfflinePlugin = require('offline-plugin')
-const isDev = process.env.NODE_ENV === 'development'
-const isProd = process.env.NODE_ENV === 'production'
+const isDev = (process.env.NODE_ENV || 'development') === 'development'
+const GA_SCRIPT = isDev ? 'analytics_debug' : 'analytics'
 
 const config = getConfig({
   in: 'src/app.js',
   out: 'public',
   clearBeforeBuild: true,
   html: context => {
-    /*eslint-disable */
     return {
-      'index.html': [
-        '<html>',
-          '<head>',
-            '<meta charset="utf-8" />',
-            '<link href="' + context.css + '" rel="stylesheet" type="text/css" />',
-          '</head>',
-          '<body>',
-            '<div id="root"></div>',
-            '<script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.4.2/localforage.nopromises.min.js"></script>',
-            '<script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>',
-            '<script src="' + context.main + '"></script>',
-            '<script src="https://apis.google.com/js/client.js?onload=OnLoadCallback"></script>',
-          '</body>',
-        '</html>'
-      ].join('')
+      'index.html': `
+        <html mode="${process.env.NODE_ENV || 'development'}">
+          <head>
+            <meta charset="utf-8" />
+            <link href="${context.css}" rel="stylesheet" type="text/css" />
+          </head>
+          <body>
+            <div id="root"></div>
+            <script deferred src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.4.2/localforage.nopromises.min.js"></script>
+            <script deferred src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
+            <script src="${context.main}"></script>
+            <script deferred src="https://apis.google.com/js/client.js?onload=OnLoadCallback"></script>
+            <script>
+              window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+              ga('create', 'UA-XXXXX-Y', 'auto');
+              ga('send', 'pageview');
+            </script>
+            <script async src="https://www.google-analytics.com/${GA_SCRIPT}.js"></script>
+          </body>
+        </html>
+      `
     }
-    /*eslint-enable */
   }
 })
 
@@ -34,12 +37,6 @@ config.output.filename = '[name].[hash].js'
 
 if (isDev) {
   config.devtool = 'cheap-module-eval-source-map'
-}
-
-if (isProd) {
-  config.plugins.push(new OfflinePlugin({
-    main: [':rest:']
-  }))
 }
 
 module.exports = config

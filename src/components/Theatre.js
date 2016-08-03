@@ -6,7 +6,7 @@ const AUTOPLAY = 1
 const VIDEOS_IDS_SEP = ','
 
 const Theatre = ({videos}, {factoryLogger}) => {
-  const log = factoryLogger({prefix: Theatre.name})
+  const log = factoryLogger({prefix: 'Theatre'})
   log('creating Theatre with titles %j', videos.map(v => v.title))
   return (
     <div className='Theatre'>
