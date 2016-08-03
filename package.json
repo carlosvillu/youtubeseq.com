@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "deploy": "npm run lint && git add --all && git commit -am \"$(date)\" && npm version minor && git push origin master --tags && NODE_ENV=production npm run build && firebase deploy",
+    "deploy": "NODE_ENV=production npm run build && firebase deploy",
     "phoenix": "rm -Rf node_modules && npm it",
     "build": "webpack",
     "co": "git-cz",

@@ -7,7 +7,7 @@ class WatchPage extends React.Component {
     super(props, ctxt)
 
     const {domain, factoryLogger} = ctxt
-    this._log = factoryLogger({prefix: WatchPage.name})
+    this._log = factoryLogger({prefix: 'WatchPage'})
     this._domain = domain
     this.state = {title: false, sequence: false}
   }

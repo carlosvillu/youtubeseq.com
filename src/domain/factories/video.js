@@ -25,7 +25,7 @@ export default class VideoFactory {
     return new YTApiVideoRepository({
       hTTPDataSource: VideoFactory.hTTPDataSource(),
       localDataSource: VideoFactory.localDataSource(),
-      log: factoryLogger({prefix: YTApiVideoRepository.name})
+      log: factoryLogger({prefix: 'YTApiVideoRepository'})
     })
   }
 
@@ -33,14 +33,14 @@ export default class VideoFactory {
     return new HTTPDataSource({
       config,
       local: VideoFactory.localDataSource(),
-      log: factoryLogger({prefix: HTTPDataSource.name})
+      log: factoryLogger({prefix: 'HTTPDataSource'})
     })
   }
 
   static localDataSource () {
     return new LocalDataSource({
       local: window.localforage,
-      log: factoryLogger({prefix: LocalDataSource.name})
+      log: factoryLogger({prefix: 'LocalDataSource'})
     })
   }
 

@@ -1,7 +1,7 @@
 /* eslint-disable no-return-assign */
 import React from 'react'
 
-const ID_PARSER_REG_EXP = /v=(\w+)/
+const ID_PARSER_REG_EXP = /v=([-|_|\w|\W]+)/
 
 class HomePage extends React.Component {
   render () {
@@ -24,9 +24,11 @@ class HomePage extends React.Component {
     parser.href = this._input.value
 
     const [, id] = parser.search.split(ID_PARSER_REG_EXP)
-    this.props.history.push(`/watch?v=${id}`)
+    id && this.context.router.push(`/watch?v=${id}`)
   }
 }
-
+HomePage.contextTypes = {
+  router: React.PropTypes.object
+}
 HomePage.displaName = 'HomePage'
 export default HomePage
