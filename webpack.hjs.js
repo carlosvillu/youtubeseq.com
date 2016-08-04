@@ -20,7 +20,9 @@ const config = getConfig({
         <html mode="${process.env.NODE_ENV || 'development'}">
           <head>
             <meta charset="utf-8" />
-            <link href="${context.css}" rel="stylesheet" type="text/css" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link href="${PUBLIC_PATH}${context.css}" rel="stylesheet">
           </head>
           <body>
             <div id="root"></div>
