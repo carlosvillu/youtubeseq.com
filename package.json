@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "deploy": "npm run build && firebase deploy",
+    "deploy": "npm run build && surge public -d youtubeseq.com",
     "phoenix": "rimraf node_modules && npm it",
     "build": "rimraf public && cross-env NODE_ENV=production webpack --config webpack.hjs.js",
     "co": "git-cz",
