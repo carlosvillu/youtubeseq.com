@@ -3,11 +3,12 @@ const getConfig = require('hjs-webpack')
 const isDev = (process.env.NODE_ENV || 'development') === 'development'
 const isProd = !isDev && process.env.NODE_ENV === 'production'
 
-const GA_SCRIPT = isDev ? 'analytics_debug' : 'analytics'
-
 const PRO_PUBLIC_PATH = ''
 const DEV_PUBLIC_PATH = ''
+
 const PUBLIC_PATH = isProd ? PRO_PUBLIC_PATH : DEV_PUBLIC_PATH
+const GA_ID = 'UA-XXXXX-Y'
+const GA_SCRIPT = isProd ? 'analytics' : 'analytics_debug'
 
 const config = getConfig({
   in: 'src/app.js',
@@ -30,7 +31,7 @@ const config = getConfig({
             <script deferred src="https://apis.google.com/js/client.js?onload=OnLoadCallback"></script>
             <script>
               window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-              ga('create', 'UA-XXXXX-Y', 'auto');
+              ga('create', '${GA_ID}', 'auto');
               ga('send', 'pageview');
             </script>
             <script async src="https://www.google-analytics.com/${GA_SCRIPT}.js"></script>
