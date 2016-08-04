@@ -14,7 +14,7 @@
     "up": "updtr --test-stdout --save-exact"
   },
   "keywords": [],
-  "author": "Carlos Villuendas <carlos.villuendas@scmspain.com>",
+  "author": "Carlos Villuendas <carlosvillu@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "babel-eslint": "6.1.2",
