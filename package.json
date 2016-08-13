@@ -36,7 +36,7 @@
     "nodemon": "1.10.0",
     "npm-run-all": "2.3.0",
     "offline-plugin": "3.4.2",
-    "postcss-loader": "0.9.1",
+    "postcss-loader": "0.10.0",
     "raw-loader": "0.5.1",
     "rimraf": "2.5.4",
     "sass-loader": "4.0.0",
