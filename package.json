@@ -43,7 +43,7 @@
     "standard": "7.1.2",
     "style-loader": "0.13.1",
     "updtr": "0.2.1",
-    "validate-commit-msg": "2.6.1",
+    "validate-commit-msg": "2.7.0",
     "webpack": "2.1.0-beta.4"
   },
   "config": {
