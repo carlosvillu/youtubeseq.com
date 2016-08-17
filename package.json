@@ -34,7 +34,7 @@
     "json-loader": "0.5.4",
     "node-sass": "3.8.0",
     "nodemon": "1.10.0",
-    "npm-run-all": "2.3.0",
+    "npm-run-all": "3.0.0",
     "offline-plugin": "3.4.2",
     "postcss-loader": "0.9.1",
     "raw-loader": "0.5.1",
