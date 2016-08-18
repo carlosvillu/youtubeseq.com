@@ -33,7 +33,7 @@
     "hjs-webpack": "8.3.0",
     "json-loader": "0.5.4",
     "node-sass": "3.8.0",
-    "nodemon": "1.10.0",
+    "nodemon": "1.10.1",
     "npm-run-all": "2.3.0",
     "offline-plugin": "3.4.2",
     "postcss-loader": "0.9.1",
